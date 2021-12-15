@@ -1,6 +1,6 @@
-# 4D Genome Browser redesign
+# 4D Genome Toolkit 
 
-This is a redesign of the 4D Genome Browser (github.com/lanl/4DGB)
+This is a data specification, schema, toolkit and browser for working with 4D genomics datasets.
 
 ## Contact
 
