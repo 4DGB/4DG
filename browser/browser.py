@@ -3,17 +3,11 @@ from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 
-import flask
 import pandas as pd
-import time
-import os
-
-server = flask.Flask('app')
-server.secret_key = os.environ.get('secret_key', 'secret')
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/hello-world-stock.csv')
 
-app = dash.Dash('app', server=server)
+app = dash.Dash('app')
 
 app.scripts.config.serve_locally = False
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-latest.min.js'
@@ -36,7 +30,7 @@ app.layout = html.Div([
 @app.callback(Output('my-graph', 'figure'),
               [Input('my-dropdown', 'value')])
 
-def update_graph(selected_dropdown_value):
+def anything_you_want_to_call_it(selected_dropdown_value):
     dff = df[df['Stock'] == selected_dropdown_value]
     return {
         'data': [{
@@ -56,6 +50,8 @@ def update_graph(selected_dropdown_value):
             }
         }
     }
+
+
 
 if __name__ == '__main__':
     app.run_server()
